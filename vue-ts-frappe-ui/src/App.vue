@@ -1,39 +1,34 @@
 <template>
-  <header>
-    <nav>
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-      </ul>
-    </nav>
-  </header>
+  <div class="m-3">
+    <Button
+      @click="showDialog = true; showConfetti()"
+      :variant="'outline'"
+      theme="green"
+      size="xl"
+    >
+      Show Dialog
+    </Button>
 
-  <input v-model="myValue" type="text">
-  <input v-model="document" type="text">
-
-  <List />
-
-  <!-- <div>
-    !-- <pre>{{ JSON.stringify(data, null, 2) }}</pre> --
-    <ul>
-      <li v-for="item in data">
-        <strong>{{ item.full_name }}</strong>
-        !-- v-bind:src -- Full reference for v-bind --
-         !-- : shorthand reference for v-bind --
-        <img style="height: 100px; display: block; padding-bottom: 20px; padding-top: 10px;" v-bind:src="item.image" alt="image" />
-      </li>
-    </ul>
-  </div> -->
+    <Dialog v-model="showDialog" :options="{
+       title: 'Awesome Dialog',
+       message: 'This is an awesome dialog',
+       size: 'xl',
+       }"></Dialog>
+  </div>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
-import List from './List.vue';
+import { ref } from 'vue';
+import { Button, Dialog } from 'frappe-ui';
+import confetti from 'canvas-confetti';
 
-const myValue = ref('DocType');
-const document = ref('Document');
+const showDialog = ref(false);
 
-watch(myValue, (newValue, oldValue) => {
-  console.log("myValue changed from", oldValue, "to", newValue);
-});
+function showConfetti() {
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 },
+  });
+}
 </script>
