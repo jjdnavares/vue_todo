@@ -10,6 +10,10 @@ export default defineConfig({
   plugins: [
     frappeui({
 			lucideIcons: true,
+      frappeProxy: {
+				port: 8080,
+				source: "^/(app|login|api|assets|files|pages|builder_assets)",
+			},
 		}),
     vue(),
     vueDevTools(),
