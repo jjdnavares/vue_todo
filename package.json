@@ -1,0 +1,14 @@
+{
+  "name": "vue_todo",
+  "version": "1.0.0",
+  "description": "Todo app based on Frappe framework and UI",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd vue-ts-frappe-ui && npm run build",
+    "postinstall": "cd vue-ts-frappe-ui && npm install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

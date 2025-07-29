@@ -53,3 +53,7 @@ jspm_packages/
 
 # Aider AI Chat
 .aider*
+
+#
+vue_todo/wwww/todo.html
+vue_todo/public/frontend/
