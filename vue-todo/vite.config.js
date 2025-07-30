@@ -4,17 +4,13 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import frappeui from 'frappe-ui/vite'
+import { lucideIcons } from 'frappe-ui/vite/lucideIcons'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    frappeui({
-			lucideIcons: true,
-      frappeProxy: {
-				port: 8080,
-				source: "^/(app|login|api|assets|files|pages|builder_assets)",
-			},
-		}),
+    frappeui(),
+    lucideIcons(),
     vue(),
     vueDevTools(),
   ],
@@ -29,20 +25,19 @@ export default defineConfig({
       'highlight.js/lib/core',
       'interactjs'
     ],
-		
 	},
   build: {
     outDir: `../vue_todo/public/frontend`,
 		emptyOutDir: true
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://buildwithhussain.com',
-        changeOrigin: true,
-        secure: true,
-        followRedirects: true
-      }
-    }
-  }
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://buildwithhussain.com',
+  //       changeOrigin: true,
+  //       secure: true,
+  //       followRedirects: true
+  //     }
+  //   }
+  // }
 })
